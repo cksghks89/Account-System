@@ -1,6 +1,5 @@
 package com.example.account.controller;
 
-import com.example.account.domain.Account;
 import com.example.account.dto.CreateAccount;
 import com.example.account.service.AccountService;
 import com.example.account.service.RedisTestService;
@@ -16,9 +15,12 @@ public class AccountController {
     private final RedisTestService redisTestService;
 
     @PostMapping("/account")
-    public CreateAccount.response createAccount(
-            @RequestBody @Valid CreateAccount.request request
+    public CreateAccount.Response createAccount(
+            @RequestBody @Valid CreateAccount.Request request
     ) {
-
+        return CreateAccount.Response.from(accountService.createAccount(
+                request.getUserId(),
+                request.getInitialBalance()
+        ));
     }
 }
