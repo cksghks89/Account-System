@@ -21,7 +21,7 @@ public class AccountDto {
     // 엔티티를 dto로 깔끔하게 변환하기 위한 코드
     public static AccountDto fromEntity(Account account){
         return AccountDto.builder()
-                .userId(account.getId())
+                .userId(account.getAccountUser().getId())
                 .accountNumber(account.getAccountNumber())
                 .balance(account.getBalance())
                 .registeredAt(account.getRegisteredAt())
