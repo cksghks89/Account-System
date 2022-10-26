@@ -16,6 +16,7 @@ public class UseBalance {
      */
     @Getter
     @Setter
+    @AllArgsConstructor
     @Builder
     public static class Request{
         @NotNull

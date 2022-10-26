@@ -1,8 +1,8 @@
-### Send POST request with json body
+### create account
 POST http://localhost:8080/account
 Content-Type: application/json
 
 {
   "userId": 1,
-  "initialBalance": 10000
+  "initialBalance": 1500000
 }
