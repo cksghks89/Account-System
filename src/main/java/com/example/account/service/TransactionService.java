@@ -67,7 +67,8 @@ public class TransactionService {
         saveAndGetTransaction(TransactionResultType.F, account, amount);
     }
 
-    private Transaction saveAndGetTransaction(TransactionResultType transactionResultType, Account account, Long amount) {
+    private Transaction saveAndGetTransaction(TransactionResultType transactionResultType,
+                                              Account account, Long amount) {
         return transactionRepository.save(
                 Transaction.builder()
                         .transactionType(TransactionType.USE)
