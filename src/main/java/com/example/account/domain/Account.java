@@ -42,11 +42,17 @@ public class Account {
     private LocalDateTime updatedAt;
 
     // 잔액 변경과 같은 중요한 로직은 entity 내에서 처리
-    public void useBalance(Long amount){
-        if(amount > balance){
+    public void useBalance(Long amount) {
+        if (amount > balance) {
             throw new AccountException(ErrorCode.AMOUNT_EXCEED_BALANCE);
         }
-
         balance -= amount;
+    }
+
+    public void cancelBalance(Long amount) {
+        if(amount < 0){
+            throw new AccountException(ErrorCode.INVALID_REQUEST);
+        }
+        balance += amount;
     }
 }
