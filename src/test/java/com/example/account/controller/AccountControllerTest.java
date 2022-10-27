@@ -66,24 +66,6 @@ class AccountControllerTest {
     }
 
     @Test
-    void successGetAccount() throws Exception {
-        //given
-        given(accountService.getAccount(anyLong()))
-                .willReturn(Account.builder()
-                        .accountNumber("3456")
-                        .accountStatus(AccountStatus.IN_USE)
-                        .build());
-
-        //when
-        //then
-        mockMvc.perform(get("/account/876"))
-                .andDo(print())
-                .andExpect(jsonPath("$.accountNumber").value("3456"))
-                .andExpect(jsonPath("$.accountStatus").value("IN_USE"))
-                .andExpect(status().isOk());
-    }
-
-    @Test
     void successDeleteAccount() throws Exception {
         //given
         given(accountService.deleteAccount(anyLong(), anyString()))
