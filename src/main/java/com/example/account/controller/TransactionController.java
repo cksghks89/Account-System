@@ -1,6 +1,7 @@
 package com.example.account.controller;
 
 import com.example.account.dto.CancelBalance;
+import com.example.account.dto.QueryTransactionResponse;
 import com.example.account.dto.UseBalance;
 import com.example.account.exception.AccountException;
 import com.example.account.service.TransactionService;
@@ -65,5 +66,14 @@ public class TransactionController {
 
             throw e;
         }
+    }
+
+    @GetMapping("/transaction/{transactionId}")
+    public QueryTransactionResponse queryTransaction(
+            @PathVariable String transactionId
+    ){
+        return QueryTransactionResponse.from(
+                transactionService.queryTransaction(transactionId)
+        );
     }
 }
