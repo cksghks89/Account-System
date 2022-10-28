@@ -4,5 +4,5 @@ Content-Type: application/json
 
 {
   "userId": 1,
-  "initialBalance": 1500000
+  "initialBalance": 1000
 }

@@ -1,17 +1,21 @@
 package com.example.account.controller;
 
+import com.example.account.domain.Account;
+import com.example.account.dto.AccountDto;
 import com.example.account.dto.AccountInfo;
 import com.example.account.dto.CreateAccount;
 import com.example.account.dto.DeleteAccount;
 import com.example.account.service.AccountService;
 import com.example.account.service.RedisTestService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 public class AccountController {
@@ -50,5 +54,11 @@ public class AccountController {
                         .balance(accountDto.getBalance())
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("/account/{accountId}")
+    public AccountDto getAccountById(@PathVariable("accountId") Long accountId) {
+        Account account = accountService.getAccount(accountId);
+        return AccountDto.fromEntity(account);
     }
 }
