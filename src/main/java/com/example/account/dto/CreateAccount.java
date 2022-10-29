@@ -1,5 +1,6 @@
 package com.example.account.dto;
 
+import com.example.account.aop.AccountLockIdInterface;
 import lombok.*;
 
 import javax.validation.constraints.Min;
